@@ -1,0 +1,18 @@
+server:
+  port: 8089
+
+spring:
+  application:
+    name: eureka-consumer-example
+
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true  # 路径显示IP地址
+    lease-renewal-interval-in-seconds: 2 # eureka客户端向服务端发送心跳的时间间隔，单元为秒，默认为30秒
+    lease-expiration-duration-in-seconds: 5 # eureka服务端收到最后一次心跳等待的时间上限，超时将移除服务，单元为秒，默认为90秒
+  client:
+    register-with-eureka: false # 是否想注册中心注册自己
+    fetch-registry: true # 是否从Eureka抓取已有的注册信息，默认为true。单节点不用设置，集群必须设置为true，才能配置ribbon使用负载均衡
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:8761/eureka/

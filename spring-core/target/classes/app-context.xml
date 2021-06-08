@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/aop
+          http://www.springframework.org/schema/aop/spring-aop.xsd
+          http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="player" class="chenyuan.spring.core.beans.Player">
+        <constructor-arg ref="game" />
+    </bean>
+
+    <bean id="game" class="chenyuan.spring.core.beans.Wow"/>
+
+    <bean id="recorder" class="chenyuan.spring.core.beans.GamingRecorder">
+        <constructor-arg ref="player"/>
+    </bean>
+
+    <aop:config>
+        <aop:aspect ref="recorder">
+            <aop:pointcut id="record" expression="execution(void chenyuan.spring.core.beans.Player.play())" />
+            <aop:before pointcut-ref="record" method="startGaming"/>
+            <aop:after pointcut-ref="record" method="endGaming"/>
+        </aop:aspect>
+    </aop:config>
+
+</beans>

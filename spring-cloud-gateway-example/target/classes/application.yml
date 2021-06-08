@@ -1,0 +1,14 @@
+server:
+  port: 8088
+
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: host-route
+        uri: http://localhost:8080/hello
+        predicates:
+        - Path=/gateway/**
+        filters:
+        - StripPrefix=1
+
