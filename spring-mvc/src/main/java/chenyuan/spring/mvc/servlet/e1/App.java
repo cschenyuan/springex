@@ -3,6 +3,7 @@ package chenyuan.spring.mvc.servlet.e1;
 import java.util.ServiceLoader;
 
 /**
+ * Java SPI机制example
  * @author chenyuan
  */
 public class App {
