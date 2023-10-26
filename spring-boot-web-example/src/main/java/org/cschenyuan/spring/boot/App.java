@@ -12,7 +12,7 @@ public class App {
 
     public static void main(String[] args) {
         SpringApplication application = new SpringApplication(App.class);
-        application.setWebApplicationType(WebApplicationType.SERVLET);
+        application.setWebApplicationType(WebApplicationType.REACTIVE);
         application.run(args);
     }
 
